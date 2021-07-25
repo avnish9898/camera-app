@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canvas Board</h1>
+    <canvas class="board"></canvas>
+    <script>
+        let board=document.querySelector(".board");
+        let tool=board.getContext("2d");
+        board.height= window.innerHeight;
+        board.width=window.innerWidth;
+        tool.fillStyle="lightgreen";
+        tool.fillRect(0,0, window.innerWidth/2,window.innerHeight/2);
+       board.addEventListener("mousedown",function(e){
+        tool.beginPath()  
+        tool.moveTo(e.layerX,e.layerY)
+       })
+       board.addEventListener("mouseup",function(e){
+        tool.lineTo(e.layerX,e.layerY)
+        tool.stroke()
+       })
+    </script>
+</body>
+</html>
